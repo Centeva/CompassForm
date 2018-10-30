@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "CompassForm": [
+        "dist/compass-form"
+      ],
+      "CompassForm/*": [
+        "dist/compass-form/*"
+      ]
+    }
   }
 }

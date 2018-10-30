@@ -121,6 +121,41 @@
           }
         }
       }
+    },
+    "CompassForm": {
+      "root": "projects/compass-form",
+      "sourceRoot": "projects/compass-form/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/compass-form/tsconfig.lib.json",
+            "project": "projects/compass-form/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/compass-form/src/test.ts",
+            "tsConfig": "projects/compass-form/tsconfig.spec.json",
+            "karmaConfig": "projects/compass-form/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/compass-form/tsconfig.lib.json",
+              "projects/compass-form/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "CompassFormApp"
