@@ -1,4 +1,3 @@
-import { CompassDateControlComponent } from './compass-date-control.component';
 import * as moment from 'moment';
 import { CompassControlConfig, ValueOrProvider, CompassControl } from '../compass-control';
 
@@ -23,7 +22,4 @@ export class CompassDateControl<ModelType> extends CompassControl<ModelType, mom
         s.maxDate = c.maxDate instanceof Function ? c.maxDate(model) : c.maxDate || defaultMaxDate;
     }
 
-    getComponent() {
-        return CompassDateControlComponent;
-    }
 }

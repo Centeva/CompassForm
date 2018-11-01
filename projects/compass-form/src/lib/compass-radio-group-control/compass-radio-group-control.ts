@@ -1,4 +1,3 @@
-import { CompassRadioGroupControlComponent } from './compass-radio-group-control.component';
 import { CompassControlConfig, ValueOrProvider, CompassControl } from '../compass-control';
 
 interface CompassRadioGroupControlConfig<ModelType, T> extends CompassControlConfig<ModelType, T> {
@@ -17,9 +16,5 @@ export class CompassRadioGroupControl<ModelType, T> extends CompassControl<Model
         const c = this.config;
         s.options = c.options instanceof Function ? c.options(model) : c.options;
         s.verticalDisplay = c.verticalDisplay instanceof Function ? c.verticalDisplay(model) : c.verticalDisplay;
-    }
-
-    getComponent() {
-        return CompassRadioGroupControlComponent;
     }
 }

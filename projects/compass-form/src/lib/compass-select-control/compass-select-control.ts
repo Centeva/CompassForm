@@ -1,4 +1,3 @@
-import { CompassSelectControlComponent } from './compass-select-control.component';
 import { CompassControl, CompassControlConfig, ValueOrProvider } from '../compass-control';
 
 interface CompassSelectControlConfig<ModelType, T> extends CompassControlConfig<ModelType, T> {
@@ -17,7 +16,4 @@ export class CompassSelectControl<ModelType, T> extends CompassControl<ModelType
         s.options = c.options instanceof Function ? c.options(model) : c.options;
     }
 
-    getComponent() {
-        return CompassSelectControlComponent;
-    }
 }

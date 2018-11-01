@@ -1,12 +1,14 @@
 import { Input, Component } from '@angular/core';
 import { CompassNumberControl } from './compass-number-control';
-import { CompassComponent } from '../compass-control';
+import { ICompassComponent } from '../compass-control';
 import { CompassForm } from '../compass-form';
+import { CompassComponent } from '../compass-form-control-to-component-map';
 
+@CompassComponent(CompassNumberControl)
 @Component({
     templateUrl: './compass-number-control.component.html',
 })
-export class CompassNumberControlComponent<ModelType> implements CompassComponent<ModelType, number> {
+export class CompassNumberControlComponent<ModelType> implements ICompassComponent<ModelType, number> {
     @Input()
     compassForm: CompassForm<ModelType>;
     @Input()

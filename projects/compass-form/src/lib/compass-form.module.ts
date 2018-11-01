@@ -11,7 +11,6 @@ import { CompassDateControlComponent } from './compass-date-control/compass-date
 import { CompassDollarControlComponent } from './compass-dollar-control/compass-dollar-control.component';
 import { CompassEstimatedDollarControlComponent } from './compass-estimated-dollar-control/compass-estimated-dollar-control.component';
 import { CompassCheckboxControlComponent } from './compass-checkbox-control/compass-checkbox-control.component';
-import { CompassRichTextControlComponent } from './compass-rich-text-control/compass-rich-text-control.component';
 import { CompassFormComponent } from './compass-form/compass-form.component';
 import { CompassFormItemComponent } from './compass-form-item/compass-form-item.component';
 import { MaterialModule } from './material.module';
@@ -27,7 +26,6 @@ const controlComponents = [
     CompassDollarControlComponent,
     CompassEstimatedDollarControlComponent,
     CompassCheckboxControlComponent,
-    CompassRichTextControlComponent,
 ];
 
 @NgModule({

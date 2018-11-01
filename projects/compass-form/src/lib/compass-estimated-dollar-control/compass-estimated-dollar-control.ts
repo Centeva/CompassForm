@@ -1,4 +1,4 @@
-import { CompassEstimatedDollarControlComponent } from './compass-estimated-dollar-control.component';
+
 import { CompassControlConfig, CompassControl, ValueOrProvider } from '../compass-control';
 
 interface CompassEstimatedDollarControlConfig<ModelType> extends CompassControlConfig<ModelType, number> {
@@ -27,7 +27,4 @@ export class CompassEstimatedDollarControl<ModelType> extends CompassControl<Mod
         s.max = c.max instanceof Function ? c.max(model) : c.max;
     }
 
-    getComponent() {
-        return CompassEstimatedDollarControlComponent;
-    }
 }

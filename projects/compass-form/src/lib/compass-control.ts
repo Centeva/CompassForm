@@ -92,11 +92,11 @@ export abstract class CompassControl<ModelType, T> {
             this.ngControl.updateValueAndValidity({ emitEvent: false });
         }
     }
-    abstract getComponent(): Type<CompassComponent<ModelType, T>>;
+    // abstract getComponent(): Type<ICompassComponent<ModelType, T>>;
 
 }
 
-export interface CompassComponent<ModelType, T> {
+export interface ICompassComponent<ModelType, T> {
     compassForm: CompassForm<ModelType>;
     compassControl: CompassControl<ModelType, T>;
 }

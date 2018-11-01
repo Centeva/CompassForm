@@ -1,5 +1,4 @@
 
-import { CompassNumberControlComponent } from './compass-number-control.component';
 import { CompassControlConfig, ValueOrProvider, CompassControl } from '../compass-control';
 
 interface CompassNumberControlConfig<ModelType> extends CompassControlConfig<ModelType, number> {
@@ -12,12 +11,22 @@ export class CompassNumberControl<ModelType> extends CompassControl<ModelType, n
         super(config);
         const ngc = this.ngControl;
 
-        const isIntValidator = field => {
+        const numberValidator = field => {
             const value = field.value;
-            return !value || parseInt(value, 10) === parseFloat(value) ? null : { numberMustBeInteger: 'Value must be an integer' };
+            if (value === null || value === undefined) { return null; }
+            const s = this.snapshot;
+            const num = parseInt(value, 10);
+            if (num !== parseFloat(value)) { return { numberMustBeInteger: 'Value must be an integer' }; }
+            if (s.min !== undefined && s.min > num) {
+                return { min: { min: s.min } };
+            }
+            if (s.max !== undefined && s.max < num) {
+                return { max: { max: s.max } };
+            }
+            return null;
         };
 
-        ngc.setValidators(ngc.validator ? [ngc.validator, isIntValidator] : isIntValidator);
+        ngc.setValidators(ngc.validator ? [ngc.validator, numberValidator] : numberValidator);
     }
 
     update(model: ModelType) {
@@ -28,7 +37,4 @@ export class CompassNumberControl<ModelType> extends CompassControl<ModelType, n
         s.max = c.max instanceof Function ? c.max(model) : c.max;
     }
 
-    getComponent() {
-        return CompassNumberControlComponent;
-    }
 }

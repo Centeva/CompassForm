@@ -1,13 +1,15 @@
 import { Input, Component } from '@angular/core';
 import * as moment from 'moment';
 import { CompassDateControl } from './compass-date-control';
-import { CompassComponent } from '../compass-control';
+import { ICompassComponent } from '../compass-control';
 import { CompassForm } from '../compass-form';
+import { CompassComponent } from '../compass-form-control-to-component-map';
 
+@CompassComponent(CompassDateControl)
 @Component({
     templateUrl: './compass-date-control.component.html',
 })
-export class CompassDateControlComponent<ModelType> implements CompassComponent<ModelType, moment.Moment> {
+export class CompassDateControlComponent<ModelType> implements ICompassComponent<ModelType, moment.Moment> {
     @Input()
     compassForm: CompassForm<ModelType>;
     @Input()

@@ -1,4 +1,3 @@
-import { CompassAutoCompleteControlComponent } from './compass-auto-complete-control.component';
 import { CompassControlConfig, CompassControl } from '../compass-control';
 
 interface CompassAutoCompleteControlConfig<ModelType, T> extends CompassControlConfig<ModelType, T> {
@@ -19,7 +18,4 @@ export class CompassAutoCompleteControl<ModelType, T> extends CompassControl<Mod
         s.initialLabel = c.initialLabel;
     }
 
-    getComponent() {
-        return CompassAutoCompleteControlComponent;
-    }
 }

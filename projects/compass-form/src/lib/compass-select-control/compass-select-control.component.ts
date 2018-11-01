@@ -1,12 +1,14 @@
 import { Input, Component } from '@angular/core';
 import { CompassSelectControl } from './compass-select-control';
-import { CompassComponent } from '../compass-control';
+import { ICompassComponent } from '../compass-control';
 import { CompassForm } from '../compass-form';
+import { CompassComponent } from '../compass-form-control-to-component-map';
 
+@CompassComponent(CompassSelectControl)
 @Component({
     templateUrl: './compass-select-control.component.html',
 })
-export class CompassSelectControlComponent<ModelType, T> implements CompassComponent<ModelType, T> {
+export class CompassSelectControlComponent<ModelType, T> implements ICompassComponent<ModelType, T> {
     @Input()
     compassForm: CompassForm<ModelType>;
     @Input()

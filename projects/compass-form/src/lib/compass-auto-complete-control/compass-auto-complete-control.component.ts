@@ -1,13 +1,15 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CompassAutoCompleteControl } from './compass-auto-complete-control';
-import { CompassComponent } from '../compass-control';
+import { ICompassComponent } from '../compass-control';
 import { CompassForm } from '../compass-form';
+import { CompassComponent } from '../compass-form-control-to-component-map';
 
+@CompassComponent(CompassAutoCompleteControl)
 @Component({
     templateUrl: './compass-auto-complete-control.component.html',
 })
-export class CompassAutoCompleteControlComponent<ModelType, T> implements CompassComponent<ModelType, T>, OnInit {
+export class CompassAutoCompleteControlComponent<ModelType, T> implements ICompassComponent<ModelType, T>, OnInit {
     @Input()
     compassForm: CompassForm<ModelType>;
     @Input()

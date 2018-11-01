@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ComponentFactoryResolver, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { CompassForm } from '../compass-form';
-import { CompassControl, CompassComponent } from '../compass-control';
+import { CompassControl, ICompassComponent } from '../compass-control';
+import { compassFormControlToComponentMap } from '../compass-form-control-to-component-map';
 
 
 @Component({
@@ -21,13 +22,14 @@ export class CompassFormItemComponent<ModelType, T> implements OnInit {
     ngOnInit() {
         this.control = this.compassForm.controls[this.property];
 
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.control.getComponent());
+        const compType = compassFormControlToComponentMap.get((this.control as any).constructor);
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(compType as any);
 
         const viewContainerRef = this.viewContainerRef;
         viewContainerRef.clear();
 
         const componentRef = viewContainerRef.createComponent(componentFactory);
-        (<CompassComponent<ModelType, T>>componentRef.instance).compassControl = this.control;
-        (<CompassComponent<ModelType, T>>componentRef.instance).compassForm = this.compassForm;
+        (<ICompassComponent<ModelType, T>>componentRef.instance).compassControl = this.control;
+        (<ICompassComponent<ModelType, T>>componentRef.instance).compassForm = this.compassForm;
     }
 }

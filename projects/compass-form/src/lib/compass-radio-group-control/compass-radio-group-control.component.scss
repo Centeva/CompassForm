@@ -1,4 +1,11 @@
 .vertical-group {
-    display: inline-flex;
-    flex-direction: column;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+mat-radio-group {
+  margin: 0 -8px;
+}
+mat-radio-button {
+  margin: 8px;
 }
