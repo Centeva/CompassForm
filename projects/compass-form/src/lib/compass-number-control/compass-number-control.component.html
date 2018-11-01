@@ -1,0 +1,5 @@
+<mat-form-field [hintLabel]="snapshot.hint" [formGroup]="compassForm.ngForm">
+    <input matInput [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" [formControlName]="snapshot.key" type="number"
+     [min]="snapshot.min" [max]="snapshot.max" step="1" />
+    <mat-error>{{snapshot.errorMessage}}</mat-error>
+</mat-form-field>

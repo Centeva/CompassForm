@@ -1,0 +1,5 @@
+<mat-form-field [hintLabel]="snapshot.hint" [formGroup]="compassForm.ngForm">
+    <textarea [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" matInput matTextareaAutosize
+     matAutosizeMinRows="2" matAutosizeMaxRows="5" [formControlName]="snapshot.key"></textarea>
+    <mat-error>{{snapshot.errorMessage}}</mat-error>
+</mat-form-field>
