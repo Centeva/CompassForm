@@ -4,17 +4,26 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CompassFormModule } from 'projects/compass-form/src/public_api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomControlComponent } from './customControl/customControl.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'projects/compass-form/src/lib/material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomControlComponent
   ],
   imports: [
     BrowserModule,
     CompassFormModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CustomControlComponent]
+
 })
 export class AppModule { }
