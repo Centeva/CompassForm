@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import { CompassControlConfig, ValueOrProvider, CompassControl } from '../compass-control';
 
 interface CompassDateControlConfig<ModelType> extends CompassControlConfig<ModelType, moment.Moment> {

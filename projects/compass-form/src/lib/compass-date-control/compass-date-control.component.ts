@@ -1,5 +1,5 @@
 import { Input, Component } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { CompassDateControl } from './compass-date-control';
 import { ICompassComponent } from '../compass-control';
 import { CompassForm } from '../compass-form';

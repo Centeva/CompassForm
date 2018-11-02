@@ -14,7 +14,7 @@ export class CompassAutoCompleteControlComponent<ModelType, T> implements ICompa
     compassForm: CompassForm<ModelType>;
     @Input()
     compassControl: CompassAutoCompleteControl<ModelType, T>;
-    filteredOptions: Subject<{}>;
+    filteredOptions: Subject<any>;
     lastPromise: Promise<{ label: string; value: T }[]>;
 
     ngOnInit() {

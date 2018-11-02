@@ -3,5 +3,11 @@
   "dest": "../../dist/compass-form",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@angular/material",
+    "@angular/cdk",
+    "@angular/material-moment-adapter",
+    "moment"
+  ]
 }

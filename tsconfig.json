@@ -24,6 +24,7 @@
       "CompassForm/*": [
         "dist/compass-form/*"
       ]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   }
 }
