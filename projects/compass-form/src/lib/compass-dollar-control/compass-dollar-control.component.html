@@ -1,6 +1,6 @@
 <mat-form-field [hintLabel]="snapshot.hint" [formGroup]="compassForm.ngForm">
-    <span matPrefix>$ &nbsp;</span>
-    <input matInput [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" [formControlName]="snapshot.key" type="number"
-     [min]="snapshot.min" [max]="snapshot.max" step="0.01" (keypress)="onKeypress($event)" />
-    <mat-error>{{snapshot.errorMessage}}</mat-error>
+  <span matPrefix>$ &nbsp;</span>
+  <input matInput [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" [formControlName]="snapshot.key" type="number"
+    [min]="snapshot.min" [max]="snapshot.max" step="0.01" (keypress)="onKeypress($event)" [attr.data-compassFormKey]="snapshot.key" />
+  <mat-error>{{snapshot.errorMessage}}</mat-error>
 </mat-form-field>
