@@ -1,6 +1,6 @@
 <ng-container *ngIf="snapshot.display" [formGroup]="compassForm.ngForm">
-    <mat-form-field [hintLabel]="snapshot.hint">
-        <input [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" matInput [formControlName]="snapshot.key" />
-        <mat-error>{{snapshot.errorMessage}}</mat-error>
-    </mat-form-field>
+  <mat-form-field [hintLabel]="snapshot.hint">
+    <input [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" matInput [formControlName]="snapshot.key" [attr.data-compassFormKey]="snapshot.key" />
+    <mat-error>{{snapshot.errorMessage}}</mat-error>
+  </mat-form-field>
 </ng-container>

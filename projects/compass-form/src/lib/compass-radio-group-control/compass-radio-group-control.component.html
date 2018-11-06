@@ -1,6 +1,6 @@
 <div [formGroup]="compassForm.ngForm">
-    <mat-radio-group [formControlName]="snapshot.key" [ngClass]="{'vertical-group': snapshot.verticalDisplay}">
-        <mat-radio-button *ngFor="let option of snapshot.options" [value]="option.value">{{option.label}}</mat-radio-button>
-    </mat-radio-group>
-    <mat-error>{{snapshot.errorMessage}}</mat-error>
+  <mat-radio-group [formControlName]="snapshot.key" [ngClass]="{'vertical-group': snapshot.verticalDisplay}" [attr.data-compassFormKey]="snapshot.key">
+    <mat-radio-button *ngFor="let option of snapshot.options" [value]="option.value">{{option.label}}</mat-radio-button>
+  </mat-radio-group>
+  <mat-error>{{snapshot.errorMessage}}</mat-error>
 </div>
