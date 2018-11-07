@@ -11,7 +11,7 @@ export class CompassNumberControl<ModelType> extends CompassControl<ModelType, n
         super(config);
         const ngc = this.ngControl;
 
-        const numberValidator = field => {
+        this.addValidator( field => {
             const value = field.value;
             if (value === null || value === undefined) { return null; }
             const s = this.snapshot;
@@ -24,9 +24,7 @@ export class CompassNumberControl<ModelType> extends CompassControl<ModelType, n
                 return { max: { max: s.max } };
             }
             return null;
-        };
-
-        ngc.setValidators(ngc.validator ? [ngc.validator, numberValidator] : numberValidator);
+        });
     }
 
     update(model: ModelType) {

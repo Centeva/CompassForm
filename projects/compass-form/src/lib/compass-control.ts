@@ -92,7 +92,11 @@ export abstract class CompassControl<ModelType, T> {
             this.ngControl.updateValueAndValidity({ emitEvent: false });
         }
     }
-    // abstract getComponent(): Type<ICompassComponent<ModelType, T>>;
+
+    addValidator(validator: ValidatorFn): void {
+      const existingValidator = this.ngControl.validator;
+      this.ngControl.setValidators(existingValidator ? [existingValidator, validator] : validator);
+    }
 
 }
 
