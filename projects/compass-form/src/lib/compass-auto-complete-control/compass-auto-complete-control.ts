@@ -1,8 +1,8 @@
-import { CompassControlConfig, CompassControl } from '../compass-control';
+import { CompassControlConfig, CompassControl, LabelValue } from '../compass-control';
 
 interface CompassAutoCompleteControlConfig<ModelType, T> extends CompassControlConfig<ModelType, T> {
     initialLabel?: string;
-    optionsProvider: ((query: string, model: Partial<ModelType>) => Promise<{ label: string; value: T }[]>);
+    optionsProvider: ((query: string, model: Partial<ModelType>) => Promise<LabelValue<T>[]>);
 }
 
 export class CompassAutoCompleteControl<ModelType, T> extends CompassControl<ModelType, T> {

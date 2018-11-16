@@ -1,7 +1,7 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CompassAutoCompleteControl } from './compass-auto-complete-control';
-import { ICompassComponent } from '../compass-control';
+import { ICompassComponent, LabelValue } from '../compass-control';
 import { CompassForm } from '../compass-form';
 import { CompassComponent } from '../compass-form-control-to-component-map';
 
@@ -15,7 +15,7 @@ export class CompassAutoCompleteControlComponent<ModelType, T> implements ICompa
     @Input()
     compassControl: CompassAutoCompleteControl<ModelType, T>;
     filteredOptions: Subject<any>;
-    lastPromise: Promise<{ label: string; value: T }[]>;
+    lastPromise: Promise<LabelValue<T>[]>;
 
     ngOnInit() {
         this.filteredOptions = new Subject();

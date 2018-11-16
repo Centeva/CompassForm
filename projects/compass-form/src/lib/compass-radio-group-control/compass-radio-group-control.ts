@@ -1,7 +1,7 @@
-import { CompassControlConfig, ValueOrProvider, CompassControl } from '../compass-control';
+import { CompassControlConfig, ValueOrProvider, CompassControl, LabelValue } from '../compass-control';
 
 interface CompassRadioGroupControlConfig<ModelType, T> extends CompassControlConfig<ModelType, T> {
-    options: ValueOrProvider<ModelType, { label: string; value: T }[]>;
+    options: ValueOrProvider<ModelType, LabelValue<T>[]>;
     verticalDisplay?: ValueOrProvider<ModelType, boolean>;
 }
 

@@ -1,7 +1,7 @@
-import { CompassControl, CompassControlConfig, ValueOrProvider } from '../compass-control';
+import { CompassControl, CompassControlConfig, ValueOrProvider, LabelValue } from '../compass-control';
 
 interface CompassSelectControlConfig<ModelType, T> extends CompassControlConfig<ModelType, T> {
-    options: ValueOrProvider<ModelType, { label: string; value: T }[]>;
+    options: ValueOrProvider<ModelType, LabelValue<T>[]>;
 }
 
 export class CompassSelectControl<ModelType, T> extends CompassControl<ModelType, T> {

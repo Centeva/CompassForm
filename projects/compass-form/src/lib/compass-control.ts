@@ -4,6 +4,10 @@ import { CompassForm } from './compass-form';
 
 
 export type ValueOrProvider<ModelType, T> = T | ((d: ModelType) => T);
+export interface LabelValue<T> {
+  label: string;
+  value: T;
+}
 
 export interface CompassControlConfig<ModelType, T> {
     initialValue?: T;
