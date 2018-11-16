@@ -53,6 +53,8 @@ export abstract class CompassControl<ModelType, T> {
                     if (errorKey === 'maxLength') { return 'Max length is ' + errors[errorKey].maxLength; }
                     if (errorKey === 'invalidInteger') { return 'Value must be an integer'; }
                     if (errorKey === 'IsNumeric') { return 'Not a number'; }
+                    if (errorKey === 'matDatepickerMin') { return 'Date cannot be before ' + errors[errorKey].min.format('MMM D, YYYY'); }
+                    if (errorKey === 'matDatepickerMax') { return 'Date cannot be after ' + errors[errorKey].max.format('MMM D, YYYY'); }
                     return errors[Object.keys(errors)[0]];
                 }
             };

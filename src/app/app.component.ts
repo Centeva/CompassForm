@@ -13,6 +13,7 @@ import {
   CompassTextareaControl
 } from 'projects/compass-form/src/public_api';
 import { CustomControl } from './customControl/customControl';
+import * as moment from 'moment';
 
 const options = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(x => ({label: 'Option ' + x, value: x}));
 
@@ -37,7 +38,7 @@ export class AppComponent implements OnInit {
         label: 'CompassCheckboxControl'
       }),
       date: new CompassDateControl({
-        label: 'CompassDateControl'
+        label: 'CompassDateControl',
       }),
       dollar: new CompassDollarControl({
         label: 'CompassDollarControl'
