@@ -5,31 +5,40 @@ export type CompassFormConfig<ModelType> = { [PropType in keyof ModelType]: Comp
 
 export class CompassForm<T> {
     ngForm: FormGroup;
-    propertyKeys: string[];
     controlsArray: CompassControl<T, any>[];
 
     constructor(public controls: CompassFormConfig<T>, formValidators?: any) {
-        this.propertyKeys = Object.keys(controls);
-        const ngFormConfig = {};
-        this.propertyKeys.forEach((k, i) => {
-            const c = controls[k] as CompassControl<T, any>;
-            c.key = k;
-            ngFormConfig[k] = controls[k].ngControl;
-            if (c.config.sortOrder === undefined) {
-                c.config.sortOrder = i * 0.001;
-            }
+        this.ngForm = new FormGroup({}, formValidators);
+        this.controlsArray = [];
+        Object.keys(controls).forEach((key, i) =>  {
+          const control = controls[key];
+          if (control.config.sortOrder === undefined) {
+              control.config.sortOrder = i * 0.001;
+          }
+          this.addControlInternal(key, control);
         });
-        this.ngForm = new FormGroup(ngFormConfig, formValidators);
-        this.controlsArray = this.propertyKeys.map(x => controls[x]).sort((a, b) => a.config.sortOrder - b.config.sortOrder);
-        this.updateItems();
-        this.ngForm.valueChanges.subscribe(() => {
-            this.updateItems();
-        });
+
+        this.sortControls();
+        this.update();
+        this.ngForm.valueChanges.subscribe(() => this.update());
     }
 
-    public updateItems() {
+    private addControlInternal(key: string, control: CompassControl<T, any>) {
+      control.key = key;
+      this.ngForm.addControl(key, control.ngControl);
+      this.controls[key] = control;
+      this.controlsArray.push(control);
+    }
+
+    public addControl(key: string, control: CompassControl<T, any>) {
+      this.addControlInternal(key, control);
+      this.sortControls();
+      this.update();
+    }
+
+    public update() {
         const model = this.ngForm.getRawValue();
-        this.propertyKeys.forEach(k => this.controls[k].update(model));
+        this.controlsArray.forEach(c => c.update(model));
     }
 
     get valid(): boolean {
@@ -38,5 +47,9 @@ export class CompassForm<T> {
 
     get value(): Partial<T> {
         return this.ngForm.getRawValue();
+    }
+
+    private sortControls() {
+      this.controlsArray.sort((a, b) => a.config.sortOrder - b.config.sortOrder);
     }
 }

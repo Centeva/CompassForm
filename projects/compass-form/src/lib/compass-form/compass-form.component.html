@@ -1,5 +1,5 @@
 <div class="compassForm">
-    <div *ngFor="let control of controls" [ngStyle]="getStyle(control)">
+    <div *ngFor="let control of getControls()" [ngStyle]="getStyle(control)">
         <compass-form-item [compassForm]="compassForm" [property]="control.key">
         </compass-form-item>
     </div>
