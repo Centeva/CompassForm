@@ -69,6 +69,11 @@ export class AppComponent implements OnInit {
         message: 'This component not included in library'
       })
     });
+
+    this.compassForm.addControl('Extra', new CompassStringControl({
+      label: 'Extra Field added Later',
+      initialValue: 'It works!'
+    }));
   }
 
   getFormValue(): string {

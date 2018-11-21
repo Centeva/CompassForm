@@ -174,7 +174,7 @@ describe('compassForm', () => {
 
         // act
         disabled = true;
-        f.updateItems();
+        f.update();
 
         // assert
         expect(f.ngForm.get('numberProp').disabled).toBe(true);
@@ -270,7 +270,7 @@ describe('compassForm', () => {
 
         // act
         const f = new CompassForm<Partial<FormModel>>(formConfig);
-        f.updateItems();
+        f.update();
 
         // assert
         expect(model1).not.toBeNull();
