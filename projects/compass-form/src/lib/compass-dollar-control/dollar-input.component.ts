@@ -88,7 +88,7 @@ export class DollarInputComponent implements ControlValueAccessor {
   }
 
   format(value) {
-    if (!value) {
+    if (!value || value === '0') {
       return '';
     }
     const match = /^(-?)([0-9]*)\.?([0-9]?[0-9]?)/.exec(value);

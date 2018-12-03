@@ -9,14 +9,6 @@ interface CompassDollarControlConfig<ModelType> extends CompassControlConfig<Mod
 export class CompassDollarControl<ModelType> extends CompassControl<ModelType, number> {
     constructor(public config: CompassDollarControlConfig<ModelType>) {
         super(config);
-
-        this.ngControl.valueChanges.subscribe(value => {
-            const valueTruncated = Math.floor(value * 100) / 100;
-            if (valueTruncated !== value) {
-                this.ngControl.setValue(valueTruncated, { emitEvent: false });
-                this.ngControl.updateValueAndValidity({ emitEvent: false });
-            }
-        });
     }
 
     update(model: ModelType) {

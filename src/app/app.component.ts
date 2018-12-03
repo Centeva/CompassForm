@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
       dollar: new CompassDollarControl({
         label: 'CompassDollarControl',
         disabled: m => m.checkbox,
-        initialValue: 1897.23
+        initialValue: 0
       }),
       estimatedDollar: new CompassEstimatedDollarControl({
         label: 'CompassEstimatedDollarControl',
