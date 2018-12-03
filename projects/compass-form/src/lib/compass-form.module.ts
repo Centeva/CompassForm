@@ -14,6 +14,7 @@ import { CompassCheckboxControlComponent } from './compass-checkbox-control/comp
 import { CompassFormComponent } from './compass-form/compass-form.component';
 import { CompassFormItemComponent } from './compass-form-item/compass-form-item.component';
 import { MaterialModule } from './material.module';
+import { DollarInputComponent } from './compass-dollar-control/dollar-input.component';
 
 const controlComponents = [
     CompassStringControlComponent,
@@ -29,7 +30,7 @@ const controlComponents = [
 ];
 
 @NgModule({
-    declarations: [CompassFormComponent, CompassFormItemComponent, ...controlComponents],
+    declarations: [CompassFormComponent, CompassFormItemComponent, ...controlComponents, DollarInputComponent],
     imports: [NgCommon, ReactiveFormsModule, FormsModule, MaterialModule],
     exports: [CompassFormComponent, CompassFormItemComponent],
     entryComponents: controlComponents,

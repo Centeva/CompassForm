@@ -39,15 +39,20 @@ export class AppComponent implements OnInit {
       }),
       date: new CompassDateControl({
         label: 'CompassDateControl',
+        disabled: m => m.checkbox
       }),
       dollar: new CompassDollarControl({
-        label: 'CompassDollarControl'
+        label: 'CompassDollarControl',
+        disabled: m => m.checkbox,
+        initialValue: 1897.23
       }),
       estimatedDollar: new CompassEstimatedDollarControl({
-        label: 'CompassEstimatedDollarControl'
+        label: 'CompassEstimatedDollarControl',
+        disabled: m => m.checkbox
       }),
       number: new CompassNumberControl({
-        label: 'CompassNumberControl'
+        label: 'CompassNumberControl',
+        disabled: m => m.checkbox
       }),
       radioGroup: new CompassRadioGroupControl({
         label: 'CompassRadioGroupControl',

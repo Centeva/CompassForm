@@ -1,0 +1,6 @@
+<mat-form-field [hintLabel]="hintLabel">
+  <span matPrefix>$ &nbsp;</span>
+  <input matInput #input [disabled]="isDisabled" [placeholder]="placeholder" (keyup)="onKeyup($event)" [attr.data-compassFormKey]="key" (focus)="focus()" (blur)="blur()" (touch)="onTouched()"/>
+  <mat-error>{{errorMessage}}</mat-error>
+</mat-form-field>
+
