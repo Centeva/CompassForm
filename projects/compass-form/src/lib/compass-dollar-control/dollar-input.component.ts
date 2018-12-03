@@ -35,10 +35,9 @@ export class DollarInputComponent implements ControlValueAccessor {
   onTouched: () => void;
   isDisabled = false;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: any) {}
 
   writeValue(value: number): void {
-    console.log('write', value);
     this.currentStrValue = value === undefined || value === null ? '' : '' + value;
     if (this.inputRef.nativeElement === this.document.activeElement) {
       this.focus();
