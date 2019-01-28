@@ -1,5 +1,4 @@
 import { ValidatorFn, FormControl, Validators } from '@angular/forms';
-import { Type } from '@angular/core';
 import { CompassForm } from './compass-form';
 
 
@@ -50,7 +49,7 @@ export abstract class CompassControl<ModelType, T> {
                     if (errorKey === 'min') { return 'Minimal value is ' + errors[errorKey].min; }
                     if (errorKey === 'max') { return 'Max value is ' + errors[errorKey].max; }
                     if (errorKey === 'pattern') { return 'Incorrect format'; }
-                    if (errorKey === 'maxLength') { return 'Max length is ' + errors[errorKey].maxLength; }
+                    if (errorKey === 'maxlength') { return 'Max length is ' + errors[errorKey].requiredLength; }
                     if (errorKey === 'invalidInteger') { return 'Value must be an integer'; }
                     if (errorKey === 'IsNumeric') { return 'Not a number'; }
                     if (errorKey === 'matDatepickerMin') { return 'Date cannot be before ' + errors[errorKey].min.format('MMM D, YYYY'); }
