@@ -1,6 +1,6 @@
 import { CompassControlConfig, CompassControl, ValueOrProvider } from '../compass-control';
 
-type materialColor = "primary" | "warn" | "accent";
+type materialColor = 'primary' | 'warn' | 'accent';
 interface CompassCheckboxControlConfig<ModelType> extends CompassControlConfig<ModelType, boolean> {
   color?: ValueOrProvider<ModelType, materialColor>;
 }

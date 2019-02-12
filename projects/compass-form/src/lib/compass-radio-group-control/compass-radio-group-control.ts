@@ -1,6 +1,6 @@
 import { CompassControlConfig, ValueOrProvider, CompassControl, LabelValue } from '../compass-control';
 
-type materialColor = "primary" | "warn" | "accent";
+type materialColor = 'primary' | 'warn' | 'accent';
 interface CompassRadioGroupControlConfig<ModelType, T> extends CompassControlConfig<ModelType, T> {
     options: ValueOrProvider<ModelType, LabelValue<T>[]>;
     verticalDisplay?: ValueOrProvider<ModelType, boolean>;
