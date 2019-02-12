@@ -19,7 +19,6 @@ export interface CompassControlConfig<ModelType, T> {
     width?: ValueOrProvider<ModelType, string>;
     sortOrder?: number;
     disabled?: ValueOrProvider<ModelType, boolean>;
-    color?: ValueOrProvider<ModelType, string>;
 }
 
 export abstract class CompassControl<ModelType, T> {
@@ -75,7 +74,6 @@ export abstract class CompassControl<ModelType, T> {
         s.hint = c.hint instanceof Function ? c.hint(model) : c.hint;
         s.width = c.width instanceof Function ? c.width(model) : c.width;
         s.disabled = c.disabled instanceof Function ? c.disabled(model) : c.disabled;
-        s.color = c.color instanceof Function ? c.color(model) : c.color;
 
         const errors = this.ngControl.errors;
         if (errors) {
