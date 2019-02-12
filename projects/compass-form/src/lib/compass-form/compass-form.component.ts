@@ -23,7 +23,6 @@ export class CompassFormComponent<T> {
             width: control.snapshot.width,
             'flex-basis': control.snapshot.width,
             display: control.snapshot.display ? 'block' : 'none',
-            color: control.snapshot.color
         };
     }
 }
