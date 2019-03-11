@@ -17,6 +17,7 @@ export * from './lib/compass-radio-group-control/compass-radio-group-control';
 export * from './lib/compass-select-control/compass-select-control';
 export * from './lib/compass-string-control/compass-string-control';
 export * from './lib/compass-textarea-control/compass-textarea-control';
+export * from './lib/compass-hidden-control/compass-hidden-control';
 export { CompassControlConfig, CompassControl, ValueOrProvider, LabelValue } from './lib/compass-control';
 export { ICompassComponent } from './lib/compass-control';
 export { CompassComponent} from './lib/compass-form-control-to-component-map';
