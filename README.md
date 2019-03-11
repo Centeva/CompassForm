@@ -1,5 +1,17 @@
 # CompassFormApp
 
+## Create New Version
+
+```
+cd .\projects\compass-form\
+npm version minor
+ng build compass-form
+cd ..\..\dist\compass-form\
+npm publish
+```
+Run `ng build compass-form`
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
 ## Development server

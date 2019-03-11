@@ -15,6 +15,7 @@ import { CompassFormComponent } from './compass-form/compass-form.component';
 import { CompassFormItemComponent } from './compass-form-item/compass-form-item.component';
 import { MaterialModule } from './material.module';
 import { DollarInputComponent } from './compass-dollar-control/dollar-input.component';
+import { CompassHiddenControlComponent } from './compass-hidden-control/compass-hidden-control.component';
 
 const controlComponents = [
     CompassStringControlComponent,
@@ -27,6 +28,7 @@ const controlComponents = [
     CompassDollarControlComponent,
     CompassEstimatedDollarControlComponent,
     CompassCheckboxControlComponent,
+    CompassHiddenControlComponent
 ];
 
 @NgModule({

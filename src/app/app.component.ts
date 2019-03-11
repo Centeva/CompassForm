@@ -14,6 +14,7 @@ import {
 } from 'projects/compass-form/src/public_api';
 import { CustomControl } from './customControl/customControl';
 import * as moment from 'moment';
+import { CompassHiddenControl } from 'projects/compass-form/src/lib/compass-hidden-control/compass-hidden-control';
 
 const options = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(x => ({label: 'Option ' + x, value: x}));
 
@@ -67,11 +68,22 @@ export class AppComponent implements OnInit {
         label: 'CompassStringControl'
       }),
       textarea: new CompassTextareaControl({
-        label: 'CompassTextareaControl'
+        label: 'CompassTextareaControl',
+        display: m => m.hidden < m.hiddenTest
       }),
       custom: new CustomControl({
         label: 'custom',
         message: 'This component not included in library'
+      }),
+      hidden: new CompassHiddenControl({
+        display: false,
+        label: null,
+        initialValue: 100
+      }),
+      hiddenTest: new CompassNumberControl({
+        label: 'hidden test',
+        initialValue: 150,
+        hint: 'If this value is below the value of the hidden field (100), the textarea should disapear'
       })
     });
 
