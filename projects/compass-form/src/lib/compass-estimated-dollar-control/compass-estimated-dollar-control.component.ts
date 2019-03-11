@@ -17,12 +17,4 @@ export class CompassEstimatedDollarControlComponent<ModelType> implements ICompa
     get snapshot() {
         return this.compassControl.snapshot;
     }
-
-    onKeypress(event: KeyboardEvent) {
-        // Kill any scientific notation or decimal keystrokes normally permitted by number field
-        if (event.key === 'e' || event.key === '+' || event.key === '-' || event.key === '.') {
-            event.preventDefault();
-            return;
-        }
-    }
 }

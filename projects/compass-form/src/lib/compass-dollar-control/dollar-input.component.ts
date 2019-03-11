@@ -27,6 +27,9 @@ export class DollarInputComponent implements ControlValueAccessor {
   key: string;
   @Input()
   errorMessage: string;
+  @Input()
+  allowDecimal: boolean = true;
+
   @ViewChild('input')
   inputRef: ElementRef<HTMLInputElement>;
 
@@ -58,10 +61,16 @@ export class DollarInputComponent implements ControlValueAccessor {
   onKeyup(event: KeyboardEvent) {
     const target = (event.target as HTMLInputElement);
     const newValue = target.value;
-    const vaidInput = !!/^-?[0-9]*(\.[0-9]?[0-9]?)?$/.exec(newValue);
-    const numValue = +newValue;
+
+    const validInput = this.allowDecimal
+      ? !!/^-?[0-9]*(\.[0-9]?[0-9]?)?$/.exec(newValue)
+      : !!/^-?[0-9]*$/.exec(newValue);
+    const numValue = this.allowDecimal
+      ? +newValue
+      : Math.floor(+newValue);
+
     const inBounds = this.checkBounds(numValue);
-    if (vaidInput && inBounds) {
+    if (validInput && inBounds) {
       this.currentStrValue = newValue;
       this.onchange(numValue);
     } else {
@@ -99,6 +108,9 @@ export class DollarInputComponent implements ControlValueAccessor {
       middlePart = middlePart.substr(0, middlePart.length - 3);
     }
     formatedMiddlePart = middlePart + formatedMiddlePart;
-    return match[1] +  formatedMiddlePart + '.' + (match[3] + '00').substr(0, 2);
+
+    return this.allowDecimal
+      ? match[1] +  formatedMiddlePart + '.' + (match[3] + '00').substr(0, 2)
+      : match[1] +  formatedMiddlePart;
   }
 }
