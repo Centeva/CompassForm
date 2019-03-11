@@ -22,7 +22,7 @@ export class CompassFormItemComponent<ModelType, T> implements OnInit {
     ngOnInit() {
         this.control = this.compassForm.controls[this.property];
 
-        const compType = compassFormControlToComponentMap.get((this.control as any).constructor);
+        const compType = compassFormControlToComponentMap.get((this.control as any).constructor.name);
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(compType as any);
 
         const viewContainerRef = this.viewContainerRef;
