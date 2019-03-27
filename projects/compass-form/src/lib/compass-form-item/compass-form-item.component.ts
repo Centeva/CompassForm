@@ -37,8 +37,6 @@ export class CompassFormItemComponent<ModelType, T> implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.fieldComponents);
-
     this.control = this.compassForm.controls[this.property];
 
     const compType = this.fieldComponents.find(
