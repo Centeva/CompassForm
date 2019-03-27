@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ICompassComponent, CompassForm, CompassControl } from 'projects/compass-form/src/public_api';
-import { CustomControl } from './customControl';
-
-
 
 @Component({
   templateUrl: './customControl.component.html',

@@ -1,12 +1,13 @@
 <ng-container [formGroup]="compassForm.ngForm">
   <compass-dollar-input
     [hintLabel]="snapshot.hint"
-    [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )"
+    [placeholder]="snapshot.label + (snapshot.required ? ' *' : '')"
     [min]="snapshot.min"
-    [max]="snapshot.max" step="1"
+    [max]="snapshot.max"
+    step="1"
     [key]="snapshot.key"
     [formControlName]="snapshot.key"
     [errorMessage]="snapshot.errorMessage"
     [allowDecimal]="false"
   ></compass-dollar-input>
-  </ng-container>
+</ng-container>

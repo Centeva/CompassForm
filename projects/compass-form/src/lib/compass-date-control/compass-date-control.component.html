@@ -1,8 +1,16 @@
 <mat-form-field [hintLabel]="snapshot.hint" [formGroup]="compassForm.ngForm">
-  <input matInput [matDatepicker]="datePicker" [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )"
-    [formControlName]="snapshot.key" (focus)="datePicker.open()" (click)="datePicker.open()" [min]="snapshot.minDate"
-    [max]="snapshot.maxDate" [attr.data-compassFormKey]="snapshot.key" />
+  <input
+    matInput
+    [matDatepicker]="datePicker"
+    [placeholder]="snapshot.label + (snapshot.required ? ' *' : '')"
+    [formControlName]="snapshot.key"
+    (focus)="datePicker.open()"
+    (click)="datePicker.open()"
+    [min]="snapshot.minDate"
+    [max]="snapshot.maxDate"
+    [attr.data-compassFormKey]="snapshot.key"
+  />
   <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
   <mat-datepicker #datePicker></mat-datepicker>
-  <mat-error>{{snapshot.errorMessage}}</mat-error>
+  <mat-error>{{ snapshot.errorMessage }}</mat-error>
 </mat-form-field>

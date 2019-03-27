@@ -1,21 +1,21 @@
-import { Input, Component } from '@angular/core';
-import { CompassCheckboxControl } from './compass-checkbox-control';
-import { ICompassComponent, CompassControl } from '../compass-control';
-import { CompassForm } from '../compass-form';
+import { Input, Component } from "@angular/core";
+import { CompassCheckboxControl } from "./compass-checkbox-control";
+import { ICompassComponent, CompassControl } from "../compass-control";
+import { CompassForm } from "../compass-form";
 
 @Component({
-    templateUrl: './compass-checkbox-control.component.html',
+  templateUrl: "./compass-checkbox-control.component.html"
 })
-export class CompassCheckboxControlComponent<ModelType> implements ICompassComponent<ModelType, boolean> {
+export class CompassCheckboxControlComponent<ModelType>
+  implements ICompassComponent<ModelType, boolean> {
+  static readonly type = "checkbox";
 
-    static readonly type = 'checkbox'
+  @Input()
+  compassForm: CompassForm<ModelType>;
+  @Input()
+  compassControl: CompassCheckboxControl<ModelType>;
 
-    @Input()
-    compassForm: CompassForm<ModelType>;
-    @Input()
-    compassControl: CompassCheckboxControl<ModelType>;
-
-    get snapshot() {
-        return this.compassControl.snapshot;
-    }
+  get snapshot() {
+    return this.compassControl.snapshot;
+  }
 }
