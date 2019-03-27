@@ -41,11 +41,63 @@ const controlComponents = [
   ],
   imports: [NgCommon, ReactiveFormsModule, FormsModule, MaterialModule],
   exports: [CompassFormComponent, CompassFormItemComponent],
-  providers: controlComponents.map(c => ({
-    provide: CompassFieldComponents,
-    useValue: c,
-    multi: true
-  })),
+  providers: [
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassStringControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassNumberControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassSelectControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassAutoCompleteControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassRadioGroupControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassTextareaControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassDateControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassDollarControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassEstimatedDollarControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassCheckboxControlComponent,
+      multi: true
+    },
+    {
+      provide: CompassFieldComponents,
+      useValue: CompassHiddenControlComponent,
+      multi: true
+    }
+  ],
   entryComponents: controlComponents
 })
 export class CompassFormModule {}
