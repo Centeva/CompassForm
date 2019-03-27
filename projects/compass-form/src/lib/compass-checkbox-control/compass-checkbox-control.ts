@@ -6,6 +6,8 @@ interface CompassCheckboxControlConfig<ModelType> extends CompassControlConfig<M
 }
 
 export class CompassCheckboxControl<ModelType> extends CompassControl<ModelType, boolean> {
+
+    readonly type = 'checkbox'
     constructor(public config: CompassCheckboxControlConfig<ModelType>) {
         super(config);
     }

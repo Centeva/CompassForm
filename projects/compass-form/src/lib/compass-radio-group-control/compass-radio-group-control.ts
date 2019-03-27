@@ -8,6 +8,7 @@ interface CompassRadioGroupControlConfig<ModelType, T> extends CompassControlCon
 }
 
 export class CompassRadioGroupControl<ModelType, T> extends CompassControl<ModelType, T> {
+  readonly type = 'radioGroup'
     constructor(public config: CompassRadioGroupControlConfig<ModelType, T>) {
         super(config);
     }

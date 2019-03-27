@@ -6,6 +6,9 @@ interface CompassAutoCompleteControlConfig<ModelType, T> extends CompassControlC
 }
 
 export class CompassAutoCompleteControl<ModelType, T> extends CompassControl<ModelType, T> {
+
+    type = "autoComplete"
+
     constructor(public config: CompassAutoCompleteControlConfig<ModelType, T>) {
         super(config);
     }

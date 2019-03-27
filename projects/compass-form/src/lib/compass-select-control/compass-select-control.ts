@@ -5,6 +5,7 @@ interface CompassSelectControlConfig<ModelType, T> extends CompassControlConfig<
 }
 
 export class CompassSelectControl<ModelType, T> extends CompassControl<ModelType, T> {
+  readonly type = 'select'
     constructor(public config: CompassSelectControlConfig<ModelType, T>) {
         super(config);
     }

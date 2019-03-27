@@ -6,6 +6,7 @@ interface CompassHiddenControlConfig<ModelType> extends CompassControlConfig<Mod
 }
 
 export class CompassHiddenControl<ModelType> extends CompassControl<ModelType, any> {
+  readonly type = 'hidden'
 	constructor(public config: CompassHiddenControlConfig<ModelType>) {
 		super(config);
 	}

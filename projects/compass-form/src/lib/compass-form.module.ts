@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken, Type } from '@angular/core';
 import { CommonModule as NgCommon } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CompassStringControlComponent } from './compass-string-control/compass-string-control.component';
@@ -16,6 +16,7 @@ import { CompassFormItemComponent } from './compass-form-item/compass-form-item.
 import { MaterialModule } from './material.module';
 import { DollarInputComponent } from './compass-dollar-control/dollar-input.component';
 import { CompassHiddenControlComponent } from './compass-hidden-control/compass-hidden-control.component';
+import { CompassFieldComponents } from './compass-field-components';
 
 const controlComponents = [
     CompassStringControlComponent,
@@ -35,6 +36,9 @@ const controlComponents = [
     declarations: [CompassFormComponent, CompassFormItemComponent, ...controlComponents, DollarInputComponent],
     imports: [NgCommon, ReactiveFormsModule, FormsModule, MaterialModule],
     exports: [CompassFormComponent, CompassFormItemComponent],
+    providers: controlComponents.map(c => ({provide: CompassFieldComponents, useValue: c, multi: true})),
     entryComponents: controlComponents,
 })
 export class CompassFormModule {}
+
+

@@ -7,6 +7,7 @@ interface CompassDollarControlConfig<ModelType> extends CompassControlConfig<Mod
 }
 
 export class CompassDollarControl<ModelType> extends CompassControl<ModelType, number> {
+  readonly type = 'dollar'
     constructor(public config: CompassDollarControlConfig<ModelType>) {
         super(config);
     }

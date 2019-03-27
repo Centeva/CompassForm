@@ -10,6 +10,8 @@ const defaultMinDate = moment([1900, 1, 1]);
 const defaultMaxDate = moment([3000, 1, 1]);
 
 export class CompassDateControl<ModelType> extends CompassControl<ModelType, moment.Moment> {
+
+  readonly type = 'date'
     constructor(public config: CompassDateControlConfig<ModelType>) {
         super(config);
     }

@@ -22,13 +22,16 @@ export interface CompassControlConfig<ModelType, T> {
 }
 
 export abstract class CompassControl<ModelType, T> {
-    ngControl: FormControl;
+  readonly type: string;
+
+  ngControl: FormControl;
     snapshot: any = {};
     requiredValidator: {
       validator: (field: any) => any;
       setEnabled(r: boolean): void;
     };
     key: string;
+
     constructor(public config: CompassControlConfig<ModelType, T>) {
         const c = this.config;
 

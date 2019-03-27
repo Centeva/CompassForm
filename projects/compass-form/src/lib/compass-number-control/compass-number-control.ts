@@ -7,6 +7,7 @@ interface CompassNumberControlConfig<ModelType> extends CompassControlConfig<Mod
 }
 
 export class CompassNumberControl<ModelType> extends CompassControl<ModelType, number> {
+  readonly type = 'number'
     constructor(public config: CompassNumberControlConfig<ModelType>) {
         super(config);
         const ngc = this.ngControl;

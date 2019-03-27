@@ -7,6 +7,8 @@ interface CustomControlConfig<ModelType, T> extends CompassControlConfig<ModelTy
 }
 
 export class CustomControl<ModelType, T> extends CompassControl<ModelType, T> {
+
+    readonly type = 'custom'
     constructor(public config: CustomControlConfig<ModelType, T>) {
         super(config);
     }
