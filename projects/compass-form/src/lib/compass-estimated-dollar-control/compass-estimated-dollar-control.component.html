@@ -1,6 +1,13 @@
-<mat-form-field [hintLabel]="snapshot.hint" [formGroup]="compassForm.ngForm">
-  <span matPrefix>$ &nbsp;</span>
-  <input matInput [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" [formControlName]="snapshot.key" type="number"
-    [min]="snapshot.min" [max]="snapshot.max" step="1" (keypress)="onKeypress($event)" [attr.data-compassFormKey]="snapshot.key" />
-  <mat-error>{{snapshot.errorMessage}}</mat-error>
-</mat-form-field>
+<ng-container [formGroup]="compassForm.ngForm">
+  <compass-dollar-input
+    [hintLabel]="snapshot.hint"
+    [placeholder]="snapshot.label + (snapshot.required ? ' *' : '')"
+    [min]="snapshot.min"
+    [max]="snapshot.max"
+    step="1"
+    [key]="snapshot.key"
+    [formControlName]="snapshot.key"
+    [errorMessage]="snapshot.errorMessage"
+    [allowDecimal]="false"
+  ></compass-dollar-input>
+</ng-container>

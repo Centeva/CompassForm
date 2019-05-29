@@ -1,57 +1,63 @@
-import { Input, Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { CompassAutoCompleteControl } from './compass-auto-complete-control';
-import { ICompassComponent, LabelValue } from '../compass-control';
-import { CompassForm } from '../compass-form';
-import { CompassComponent } from '../compass-form-control-to-component-map';
+import { Input, Component, OnInit } from "@angular/core";
+import { Subject } from "rxjs";
+import { CompassAutoCompleteControl } from "./compass-auto-complete-control";
+import { ICompassComponent, LabelValue } from "../compass-control";
+import { CompassForm } from "../compass-form";
 
-@CompassComponent(CompassAutoCompleteControl)
 @Component({
-    templateUrl: './compass-auto-complete-control.component.html',
+  templateUrl: "./compass-auto-complete-control.component.html"
 })
-export class CompassAutoCompleteControlComponent<ModelType, T> implements ICompassComponent<ModelType, T>, OnInit {
-    @Input()
-    compassForm: CompassForm<ModelType>;
-    @Input()
-    compassControl: CompassAutoCompleteControl<ModelType, T>;
-    filteredOptions: Subject<any>;
-    lastPromise: Promise<LabelValue<T>[]>;
+export class CompassAutoCompleteControlComponent<ModelType, T>
+  implements ICompassComponent<ModelType, T>, OnInit {
+  static type = "autoComplete";
 
-    ngOnInit() {
-        this.filteredOptions = new Subject();
-        const inputProcessor = debounce(async input => {
-            if (typeof input !== 'string') { return; } // users can't type with objects
-            const promise = this.compassControl.config.optionsProvider(input, this.compassForm.value);
-            this.lastPromise = promise;
-            const x = await promise;
-            if (promise === this.lastPromise) {
-                this.filteredOptions.next(x);
-            }
-        }, 100);
-        this.compassControl.ngControl.valueChanges.subscribe(input => {
-            this.filteredOptions.next([]);
-            inputProcessor(input);
-        });
-    }
+  @Input()
+  compassForm: CompassForm<ModelType>;
+  @Input()
+  compassControl: CompassAutoCompleteControl<ModelType, T>;
+  filteredOptions: Subject<any>;
+  lastPromise: Promise<LabelValue<T>[]>;
 
-    get snapshot() {
-        return this.compassControl.snapshot;
-    }
+  ngOnInit() {
+    this.filteredOptions = new Subject();
+    const inputProcessor = debounce(async input => {
+      if (typeof input !== "string") {
+        return;
+      } // users can't type with objects
+      const promise = this.compassControl.config.optionsProvider(
+        input,
+        this.compassForm.value
+      );
+      this.lastPromise = promise;
+      const x = await promise;
+      if (promise === this.lastPromise) {
+        this.filteredOptions.next(x);
+      }
+    }, 100);
+    this.compassControl.ngControl.valueChanges.subscribe(input => {
+      this.filteredOptions.next([]);
+      inputProcessor(input);
+    });
+  }
 
-    autoCompleteDisplay(options: any[], initialLabel: string) {
-        return function(val) {
-            if (val) {
-                const option = options && options.find(x => x.value === val);
-                return option ? option.label : initialLabel;
-            }
-        };
-    }
+  get snapshot() {
+    return this.compassControl.snapshot;
+  }
+
+  autoCompleteDisplay(options: any[], initialLabel: string) {
+    return function(val) {
+      if (val) {
+        const option = options && options.find(x => x.value === val);
+        return option ? option.label : initialLabel;
+      }
+    };
+  }
 }
 
 function debounce(func, delay) {
-    let timeoutId;
-    return input => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func(input), delay);
-    };
+  let timeoutId;
+  return input => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(input), delay);
+  };
 }

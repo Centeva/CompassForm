@@ -1,3 +1,8 @@
 <section [formGroup]="compassForm.ngForm">
-  <mat-checkbox [formControlName]="snapshot.key" [attr.data-compassFormKey]="snapshot.key" [color]="snapshot.color">{{snapshot.label}}</mat-checkbox>
+  <mat-checkbox
+    [formControlName]="snapshot.key"
+    [attr.data-compassFormKey]="snapshot.key"
+    [color]="snapshot.color"
+    >{{ snapshot.label }}</mat-checkbox
+  >
 </section>
