@@ -18,25 +18,21 @@ import { DollarInputComponent } from "./compass-dollar-control/dollar-input.comp
 import { CompassHiddenControlComponent } from "./compass-hidden-control/compass-hidden-control.component";
 import { CompassFieldComponents } from "./compass-field-components";
 
-const controlComponents = [
-  CompassStringControlComponent,
-  CompassNumberControlComponent,
-  CompassSelectControlComponent,
-  CompassAutoCompleteControlComponent,
-  CompassRadioGroupControlComponent,
-  CompassTextareaControlComponent,
-  CompassDateControlComponent,
-  CompassDollarControlComponent,
-  CompassEstimatedDollarControlComponent,
-  CompassCheckboxControlComponent,
-  CompassHiddenControlComponent
-];
-
 @NgModule({
   declarations: [
     CompassFormComponent,
     CompassFormItemComponent,
-    ...controlComponents,
+    CompassStringControlComponent,
+    CompassNumberControlComponent,
+    CompassSelectControlComponent,
+    CompassAutoCompleteControlComponent,
+    CompassRadioGroupControlComponent,
+    CompassTextareaControlComponent,
+    CompassDateControlComponent,
+    CompassDollarControlComponent,
+    CompassEstimatedDollarControlComponent,
+    CompassCheckboxControlComponent,
+    CompassHiddenControlComponent,
     DollarInputComponent
   ],
   imports: [NgCommon, ReactiveFormsModule, FormsModule, MaterialModule],
@@ -98,6 +94,18 @@ const controlComponents = [
       multi: true
     }
   ],
-  entryComponents: controlComponents
+  entryComponents: [
+    CompassStringControlComponent,
+    CompassNumberControlComponent,
+    CompassSelectControlComponent,
+    CompassAutoCompleteControlComponent,
+    CompassRadioGroupControlComponent,
+    CompassTextareaControlComponent,
+    CompassDateControlComponent,
+    CompassDollarControlComponent,
+    CompassEstimatedDollarControlComponent,
+    CompassCheckboxControlComponent,
+    CompassHiddenControlComponent
+  ]
 })
 export class CompassFormModule {}
