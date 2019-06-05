@@ -6,6 +6,7 @@
     [formControlName]="snapshot.key"
     [matAutocomplete]="auto"
     [attr.data-compassFormKey]="snapshot.key"
+    autocomplete="off"
   />
   <mat-autocomplete
     #auto="matAutocomplete"
@@ -16,7 +17,7 @@
   >
     <mat-option
       [title]="option.tooltip"
-      *ngFor="let option of (filteredOptions | async)"
+      *ngFor="let option of filteredOptions | async"
       [value]="option.value"
     >
       <span>{{ option.label }}</span>
