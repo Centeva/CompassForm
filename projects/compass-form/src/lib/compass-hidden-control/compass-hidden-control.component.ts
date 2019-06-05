@@ -1,17 +1,18 @@
 import { Input, Component } from "@angular/core";
-import { CompassStringControl } from "./compass-string-control";
+import { CompassHiddenControl } from "./compass-hidden-control";
 import { ICompassComponent } from "../compass-control";
 import { CompassForm } from "../compass-form";
+
 @Component({
-  templateUrl: "./compass-string-control.component.html"
+  template: ""
 })
-export class CompassStringControlComponent<ModelType>
+export class CompassHiddenControlComponent<ModelType>
   implements ICompassComponent<ModelType, string> {
-  static readonly type = "string";
+  static readonly type = "hidden";
   @Input()
   compassForm: CompassForm<ModelType>;
   @Input()
-  compassControl: CompassStringControl<ModelType>;
+  compassControl: CompassHiddenControl<ModelType>;
 
   get snapshot() {
     return this.compassControl.snapshot;

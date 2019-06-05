@@ -1,6 +1,15 @@
 <mat-form-field [hintLabel]="snapshot.hint" [formGroup]="compassForm.ngForm">
-  <mat-select [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )" matInput [formControlName]="snapshot.key" [attr.data-compassFormKey]="snapshot.key">
-    <mat-option *ngFor="let option of snapshot.options" [value]="option.value">{{option.label}}</mat-option>
+  <mat-select
+    [placeholder]="snapshot.label + (snapshot.required ? ' *' : '')"
+    matInput
+    [formControlName]="snapshot.key"
+    [attr.data-compassFormKey]="snapshot.key"
+  >
+    <mat-option
+      *ngFor="let option of snapshot.options"
+      [value]="option.value"
+      >{{ option.label }}</mat-option
+    >
   </mat-select>
-  <mat-error>{{snapshot.errorMessage}}</mat-error>
+  <mat-error>{{ snapshot.errorMessage }}</mat-error>
 </mat-form-field>

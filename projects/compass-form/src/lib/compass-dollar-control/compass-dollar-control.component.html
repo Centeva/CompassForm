@@ -6,15 +6,15 @@
 </mat-form-field>
  -->
 
- <ng-container [formGroup]="compassForm.ngForm">
-<compass-dollar-input
-  [hintLabel]="snapshot.hint"
-  [placeholder]="snapshot.label + (snapshot.required ? ' *':'' )"
-  [min]="snapshot.min"
-  [max]="snapshot.max" step="0.01"
-  [key]="snapshot.key"
-  [formControlName]="snapshot.key"
-  [errorMessage]="snapshot.errorMessage"
-></compass-dollar-input>
+<ng-container [formGroup]="compassForm.ngForm">
+  <compass-dollar-input
+    [hintLabel]="snapshot.hint"
+    [placeholder]="snapshot.label + (snapshot.required ? ' *' : '')"
+    [min]="snapshot.min"
+    [max]="snapshot.max"
+    step="0.01"
+    [key]="snapshot.key"
+    [formControlName]="snapshot.key"
+    [errorMessage]="snapshot.errorMessage"
+  ></compass-dollar-input>
 </ng-container>
-

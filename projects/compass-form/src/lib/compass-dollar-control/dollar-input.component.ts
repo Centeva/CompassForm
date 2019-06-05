@@ -1,20 +1,27 @@
-import { Component, Input, forwardRef, ElementRef, ViewChild, OnInit, Inject } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DOCUMENT } from '@angular/common';
+import {
+  Component,
+  Input,
+  forwardRef,
+  ElementRef,
+  ViewChild,
+  OnInit,
+  Inject
+} from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { DOCUMENT } from "@angular/common";
 
 @Component({
-  selector: 'compass-dollar-input',
-  templateUrl: './dollar-input.component.html',
+  selector: "compass-dollar-input",
+  templateUrl: "./dollar-input.component.html",
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DollarInputComponent),
-      multi: true,
-    },
-  ],
+      multi: true
+    }
+  ]
 })
 export class DollarInputComponent implements ControlValueAccessor {
-
   @Input()
   hintLabel: string;
   @Input()
@@ -27,10 +34,13 @@ export class DollarInputComponent implements ControlValueAccessor {
   key: string;
   @Input()
   errorMessage: string;
-  @ViewChild('input')
+  @Input()
+  allowDecimal: boolean = true;
+
+  @ViewChild("input")
   inputRef: ElementRef<HTMLInputElement>;
 
-  currentStrValue = '';
+  currentStrValue = "";
   onchange: (v: number) => void;
   onTouched: () => void;
   isDisabled = false;
@@ -38,7 +48,8 @@ export class DollarInputComponent implements ControlValueAccessor {
   constructor(@Inject(DOCUMENT) private document: any) {}
 
   writeValue(value: number): void {
-    this.currentStrValue = value === undefined || value === null ? '' : '' + value;
+    this.currentStrValue =
+      value === undefined || value === null ? "" : "" + value;
     if (this.inputRef.nativeElement === this.document.activeElement) {
       this.focus();
     } else {
@@ -56,12 +67,16 @@ export class DollarInputComponent implements ControlValueAccessor {
   }
 
   onKeyup(event: KeyboardEvent) {
-    const target = (event.target as HTMLInputElement);
+    const target = event.target as HTMLInputElement;
     const newValue = target.value;
-    const vaidInput = !!/^-?[0-9]*(\.[0-9]?[0-9]?)?$/.exec(newValue);
-    const numValue = +newValue;
+
+    const validInput = this.allowDecimal
+      ? !!/^-?[0-9]*(\.[0-9]?[0-9]?)?$/.exec(newValue)
+      : !!/^-?[0-9]*$/.exec(newValue);
+    const numValue = this.allowDecimal ? +newValue : Math.floor(+newValue);
+
     const inBounds = this.checkBounds(numValue);
-    if (vaidInput && inBounds) {
+    if (validInput && inBounds) {
       this.currentStrValue = newValue;
       this.onchange(numValue);
     } else {
@@ -70,8 +85,14 @@ export class DollarInputComponent implements ControlValueAccessor {
   }
 
   checkBounds(num: number) {
-    const min = this.min !== undefined && this.min !== null ? this.min : Number.MIN_SAFE_INTEGER;
-    const max = this.max !== undefined && this.max !== null ? this.max : Number.MAX_SAFE_INTEGER;
+    const min =
+      this.min !== undefined && this.min !== null
+        ? this.min
+        : Number.MIN_SAFE_INTEGER;
+    const max =
+      this.max !== undefined && this.max !== null
+        ? this.max
+        : Number.MAX_SAFE_INTEGER;
     return min <= num && max >= num;
   }
 
@@ -83,22 +104,25 @@ export class DollarInputComponent implements ControlValueAccessor {
   }
 
   blur() {
-    this.currentStrValue = (+this.currentStrValue) + '';
+    this.currentStrValue = +this.currentStrValue + "";
     this.inputRef.nativeElement.value = this.format(this.currentStrValue);
   }
 
   format(value) {
-    if (!value || value === '0') {
-      return '';
+    if (!value || value === "0") {
+      return "";
     }
     const match = /^(-?)([0-9]*)\.?([0-9]?[0-9]?)/.exec(value);
     let middlePart = match[2];
-    let formatedMiddlePart = '';
+    let formatedMiddlePart = "";
     while (middlePart.length > 3) {
-      formatedMiddlePart = ',' + middlePart.substr(-3) + formatedMiddlePart;
+      formatedMiddlePart = "," + middlePart.substr(-3) + formatedMiddlePart;
       middlePart = middlePart.substr(0, middlePart.length - 3);
     }
     formatedMiddlePart = middlePart + formatedMiddlePart;
-    return match[1] +  formatedMiddlePart + '.' + (match[3] + '00').substr(0, 2);
+
+    return this.allowDecimal
+      ? match[1] + formatedMiddlePart + "." + (match[3] + "00").substr(0, 2)
+      : match[1] + formatedMiddlePart;
   }
 }

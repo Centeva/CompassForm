@@ -1,12 +1,12 @@
 .compassForm {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -10px;
-    max-width: 100%;
-    > * {
-        padding: 10px;
-        flex-basis: 100%;
-        width: 100%;
-        flex-grow: 1;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+  max-width: 100%;
+  > * {
+    padding: 10px;
+    flex-basis: 100%;
+    width: 100%;
+    flex-grow: 1;
+  }
 }
