@@ -37,7 +37,7 @@ export class DollarInputComponent implements ControlValueAccessor {
   @Input()
   allowDecimal: boolean = true;
 
-  @ViewChild("input")
+  @ViewChild("input", { static: false })
   inputRef: ElementRef<HTMLInputElement>;
 
   currentStrValue = "";
