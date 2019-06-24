@@ -100,15 +100,19 @@ export class DollarInputComponent implements ControlValueAccessor {
   }
 
   focus() {
-    const el = this.inputRef.nativeElement;
-    el.value = this.currentStrValue;
-    el.selectionStart = 0;
-    el.selectionEnd = Number.MAX_SAFE_INTEGER;
+    if (!!this.inputRef) {
+      const el = this.inputRef.nativeElement;
+      el.value = this.currentStrValue;
+      el.selectionStart = 0;
+      el.selectionEnd = Number.MAX_SAFE_INTEGER;
+    }
   }
 
   blur() {
     this.currentStrValue = +this.currentStrValue + "";
-    this.inputRef.nativeElement.value = this.format(this.currentStrValue);
+    if (!!this.inputRef) {
+      this.inputRef.nativeElement.value = this.format(this.currentStrValue);
+    }
   }
 
   format(value) {
