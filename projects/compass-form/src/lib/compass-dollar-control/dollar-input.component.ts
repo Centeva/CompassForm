@@ -50,7 +50,10 @@ export class DollarInputComponent implements ControlValueAccessor {
   writeValue(value: number): void {
     this.currentStrValue =
       value === undefined || value === null ? "" : "" + value;
-    if (this.inputRef.nativeElement === this.document.activeElement) {
+    if (
+      !!this.inputRef &&
+      this.inputRef.nativeElement === this.document.activeElement
+    ) {
       this.focus();
     } else {
       this.blur();
