@@ -76,14 +76,19 @@ export class DollarInputComponent implements ControlValueAccessor {
     const validInput = this.allowDecimal
       ? !!/^-?[0-9]*(\.[0-9]?[0-9]?)?$/.exec(newValue)
       : !!/^-?[0-9]*$/.exec(newValue);
-    const numValue = this.allowDecimal ? +newValue : Math.floor(+newValue);
-
-    const inBounds = this.checkBounds(numValue);
-    if (validInput && inBounds) {
+    if (newValue === "-") {
       this.currentStrValue = newValue;
-      this.onchange(numValue);
+      this.onchange(+newValue);
     } else {
-      target.value = this.currentStrValue;
+      const numValue = this.allowDecimal ? +newValue : Math.floor(+newValue);
+
+      const inBounds = this.checkBounds(numValue);
+      if (validInput && inBounds) {
+        this.currentStrValue = newValue;
+        this.onchange(numValue);
+      } else {
+        target.value = this.currentStrValue;
+      }
     }
   }
 

@@ -20,7 +20,7 @@ export class CompassEstimatedDollarControl<ModelType> extends CompassControl<
 
     this.ngControl.valueChanges.subscribe(value => {
       const valueTruncated = Math.floor(value);
-      if (valueTruncated !== value) {
+      if (valueTruncated.valueOf() && valueTruncated !== value) {
         this.ngControl.setValue(valueTruncated, { emitEvent: false });
         this.ngControl.updateValueAndValidity({ emitEvent: false });
       }
