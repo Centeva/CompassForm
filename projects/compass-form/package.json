@@ -9,6 +9,6 @@
     "@angular/material": "^8.0.1",
     "@angular/cdk": "^8.0.1",
     "@angular/material-moment-adapter": "^8.0.1",
-    "moment": "^2.22.2"
+    "moment": "^2.29.2"
   }
 }
